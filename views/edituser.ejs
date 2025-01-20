@@ -1,0 +1,26 @@
+<%- include("layout/header") %>
+<h1 ><%= title %></h1>
+<form action="/edit/<%= users._id %> " method="POST" enctype='multipart/form-data'>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="<%= users.email %> ">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="<%= users.name %>">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="<%= users.phone %>">
+    </div>
+    <div class="form-group">
+        <img src="/<%= users.image%>" width="50px" class="img-thumbnail">
+        <input type="hidden" name="old_image" value="<%= users.image%>"">
+        <label class="form-check-label" for="exampleCheck1">Choose Image:</label>
+      <input type="file" class="form-control" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<%- include("layout/footer") %>

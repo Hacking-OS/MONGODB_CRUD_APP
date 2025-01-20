@@ -1,0 +1,50 @@
+<%- include("layout/header") %>
+  <% if(message){ %>
+    <div class="alert alert-<%= message.type%> alert-dismissible fade show" role="alert">
+      <strong>
+        <%= message.message %>
+      </strong>
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+
+      <h2>HomePage</h2>
+      <table id="example" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (users!="" ) { %>
+          <% users.forEach((row,index)=>{ %>
+            <tr>
+              <th scope="row"><%= index %> </th>
+              <td><img src="<%= row.image %> " width="50px" class="img-thumbnail"></td>
+              <td><%= row.name %></td>
+              <td><%= row.email %></td>
+              <td><%= row.phone %></td>
+              <td>
+                <!-- <a class="text-success"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit</a>
+            <a class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a> -->
+                <a href="edit/<%= row._id %> " class="text-success" style="font-size:20px"><i class="fa fa-pencil-square"
+                    aria-hidden="true"></i></a>
+                <a href="delete/<%= row._id %> " class="text-danger" style="font-size:20px"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+              </td>
+            </tr>
+            <% }) %>
+            <% }else { %>
+              <h2 class="text-center">No users Found In the database!</h2>
+              <% } %>
+        </tbody>
+      </table>
+
+      <%- include("layout/footer") %>
